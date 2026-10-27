@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Portfolio Riwane Ferroudj</title>
+<meta name="description" content="Portfolio de Riwane Ferroudj, BTS SIO option SISR : réalisations, tableau de synthèse E5, stages, veille technologique et contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Modèle 03 (inspiré de Linear) : colonne de 1120px sur fond sombre, halo violet derrière l'accueil, bordures 1px, titres en dégradé. Palette Violet Dream. Thème sombre assumé. */
+:root{
+  color-scheme:dark;
+  --bg:#08070d;          /* fond */
+  --bg-2:#0f0d18;        /* surfaces */
+  --bg-3:#171425;        /* surfaces en relief */
+  --line:#262238;        /* bordures fines */
+  --line-2:#3a3354;
+  --fg:#efedf7;          /* texte */
+  --muted:#9a94b3;
+  --faint:#6c6687;
+  --violet:#8b5cf6;      /* accent Violet Dream */
+  --violet-2:#c4b5fd;
+  --violet-soft:rgba(139,92,246,.14);
+  --pink:#e879f9;
+  --ok:#34d399; --ok-soft:rgba(52,211,153,.12);
+  --wip:#fbbf24; --wip-soft:rgba(251,191,36,.12);
+  --soon:#94a3b8; --soon-soft:rgba(148,163,184,.10);
+  --f-display:"Inter Tight","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter","Segoe UI",system-ui,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto}
+a{color:var(--violet-2);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;line-height:1.12;text-wrap:balance}
+p{margin:0}
+.mono{font-family:var(--f-mono)}
+.todo{color:var(--wip);background:var(--wip-soft);font-family:var(--f-mono);font-size:.8em;padding:1px 6px;border-radius:4px}
+
+/* Navigation */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));
+  padding-inline:max(16px,env(safe-area-inset-left,0px));background:rgba(8,7,13,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--fg);text-decoration:none;font-family:var(--f-display);font-weight:600;white-space:nowrap}
+.brand i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--violet),var(--pink));display:grid;place-items:center;font-style:normal;font-size:.7rem;color:#fff;font-weight:700}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.l{display:block;color:var(--muted);text-decoration:none;font-size:.88rem;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.nav a.l:hover{color:var(--fg);background:var(--bg-3)}
+
+/* Accueil */
+.hero{position:relative;padding-block:96px 72px;text-align:center;isolation:isolate}
+.hero::before{content:"";position:absolute;z-index:-1;left:50%;top:-40px;width:min(900px,100%);height:520px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(139,92,246,.42),rgba(232,121,249,.12) 55%,transparent);filter:blur(30px);pointer-events:none}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:rgba(15,13,24,.7);border-radius:999px;padding:5px 12px 5px 8px;font-size:.82rem;color:var(--muted)}
+.pill b{font-weight:600;color:var(--fg);background:var(--violet-soft);border:1px solid rgba(139,92,246,.35);border-radius:999px;padding:1px 8px;font-size:.75rem}
+.hero h1{font-size:clamp(2.6rem,7.5vw,5rem);font-weight:700;letter-spacing:-.045em;margin-top:26px;
+  background:linear-gradient(180deg,#fff 20%,#b9a8f5 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{max-width:60ch;margin:22px auto 0;color:var(--muted);font-size:1.12rem}
+.cta{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .92rem var(--f-body);padding:10px 16px;border-radius:8px;text-decoration:none;cursor:pointer;
+  color:var(--fg);background:var(--bg-3);border:1px solid var(--line-2);transition:border-color .15s,background .15s}
+.btn:hover{border-color:var(--violet)}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.primary:hover{background:#fff}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:64px;border:1px solid var(--line);border-radius:12px;background:rgba(15,13,24,.6);text-align:left}
+.facts div{padding:18px 20px;border-left:1px solid var(--line);min-width:0}
+.facts div:first-child{border-left:0}
+.facts dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
+.facts dd{margin:4px 0 0;font-weight:500}
+
+/* Sections */
+section.s{padding-block:88px;border-top:1px solid var(--line)}
+#contact{border-top:0;padding-top:0}
+.s-head{display:grid;gap:12px;margin-bottom:40px;max-width:66ch}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;color:var(--violet-2);letter-spacing:.02em}
+.s-head h2{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:700;letter-spacing:-.035em;
+  background:linear-gradient(180deg,#fff 30%,#a99ae0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.s-head p{color:var(--muted)}
+
+/* Projet vedette */
+.feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px;padding:32px;border:1px solid var(--line);border-radius:16px;
+  background:linear-gradient(180deg,var(--bg-2),var(--bg));position:relative;overflow:hidden;margin-bottom:40px}
+.feature::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;background:radial-gradient(600px 240px at 85% 0%,rgba(139,92,246,.18),transparent)}
+.feature>*{position:relative;z-index:1;min-width:0}
+.feature h3{font-size:clamp(1.8rem,3.6vw,2.4rem);font-weight:700;letter-spacing:-.03em;margin-top:12px}
+.feature .pitch{color:var(--muted);margin-top:12px}
+.feature ul.pts{margin:18px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.feature ul.pts li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:.95rem}
+.feature ul.pts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet);margin-top:.6em;justify-self:center}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+/* Aperçu navigateur */
+.browser{border:1px solid var(--line-2);border-radius:12px;background:#f6f3ee;overflow:hidden;box-shadow:0 30px 80px -30px rgba(139,92,246,.45);align-self:center}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#1a1726;border-bottom:1px solid var(--line-2)}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:#3a3354}
+.browser .bar span{margin-left:10px;flex:1;font-family:var(--f-mono);font-size:.72rem;color:var(--muted);background:var(--bg);border-radius:5px;padding:3px 10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.site{padding:22px 22px 26px;color:#1d1a16;font-family:var(--f-display)}
+.site nav{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;font-family:var(--f-body);color:#5a544b}
+.site nav b{font-family:var(--f-display);color:#1d1a16;letter-spacing:.04em}
+.site nav span{display:flex;gap:10px}
+.site .big{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;letter-spacing:-.03em;line-height:1.02;margin-top:26px;text-transform:uppercase}
+.site .sm{font-family:var(--f-body);font-size:.78rem;color:#5a544b;margin-top:10px;max-width:34ch}
+.site .row{display:flex;gap:8px;margin-top:16px}
+.site .row span{font-family:var(--f-body);font-size:.7rem;padding:6px 10px;border-radius:999px;border:1px solid #1d1a16}
+.site .row span:first-child{background:#1d1a16;color:#f6f3ee}
+.site .tick{margin-top:20px;border-top:1px solid #d8d1c6;padding-top:10px;font-family:var(--f-body);font-size:.62rem;letter-spacing:.12em;color:#5a544b;white-space:nowrap;overflow:hidden}
+
+/* Statuts */
+.status{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-live{color:var(--ok);background:var(--ok-soft);border-color:rgba(52,211,153,.3)}
+.st-wip{color:var(--wip);background:var(--wip-soft);border-color:rgba(251,191,36,.3)}
+.st-soon{color:var(--soon);background:var(--soon-soft);border-color:rgba(148,163,184,.25)}
+.st-live::before{box-shadow:0 0 0 3px rgba(52,211,153,.18)}
+
+/* Filtres */
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;padding:4px;border:1px solid var(--line);border-radius:10px;width:max-content;max-width:100%;background:var(--bg-2)}
+.filters button{font:500 .88rem var(--f-body);color:var(--muted);background:transparent;border:0;border-radius:7px;padding:7px 12px;cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.filters button span{font-family:var(--f-mono);font-size:.74rem;color:var(--faint)}
+.filters button[aria-pressed="true"]{background:var(--bg-3);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.filters button[aria-pressed="true"] span{color:var(--violet-2)}
+
+/* Cartes projets */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{display:flex;flex-direction:column;gap:12px;padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--bg-2);min-width:0;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--line-2)}
+.card[data-status="live"]:hover{border-color:rgba(139,92,246,.6)}
+.card[data-status="soon"]{background:transparent;border-style:dashed;border-color:var(--line-2)}
+.card[data-status="soon"] h3{color:var(--muted)}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .kind{font-family:var(--f-mono);font-size:.72rem;color:var(--faint);text-transform:uppercase;letter-spacing:.05em}
+.card h3{font-size:1.3rem;font-weight:600;letter-spacing:-.02em}
+.card p{color:var(--muted);font-size:.94rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.tags li{font-family:var(--f-mono);font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:2px 7px}
+.comps{display:flex;flex-wrap:wrap;gap:5px}
+.comps span{font-family:var(--f-mono);font-size:.72rem;font-weight:500;color:var(--violet-2);background:var(--violet-soft);border-radius:5px;padding:2px 7px}
+.card .foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px;font-size:.88rem}
+.card .foot a{text-decoration:none;color:var(--fg);display:inline-flex;gap:6px;align-items:center}
+.card .foot a:hover{color:var(--violet-2)}
+.card .foot .note{color:var(--faint);font-size:.85rem}
+/* Barre d'étapes (projet en cours) */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:2px}
+.steps i{height:4px;border-radius:2px;background:var(--line-2)}
+.steps i.done{background:var(--wip)}
+.steps-l{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:.68rem;color:var(--faint)}
+.empty{grid-column:1/-1;color:var(--muted);padding:24px;border:1px dashed var(--line-2);border-radius:12px;text-align:center}
+
+/* Tableau de synthèse */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg-2)}
+table.matrix{border-collapse:collapse;width:100%;min-width:780px;font-size:.92rem}
+.matrix th,.matrix td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:center}
+.matrix thead th{font-family:var(--f-mono);font-size:.72rem;font-weight:500;color:var(--muted);background:var(--bg-3);vertical-align:bottom}
+.matrix thead th small{display:block;font-family:var(--f-body);font-size:.7rem;color:var(--faint);font-weight:400;margin-top:3px;line-height:1.3}
+.matrix thead th:first-child,.matrix tbody th{text-align:left}
+.matrix tbody th{font-weight:500;white-space:nowrap}
+.matrix tbody th em{display:block;font-style:normal;font-family:var(--f-mono);font-size:.7rem;color:var(--faint);font-weight:400}
+.matrix tbody tr:last-child>*{border-bottom:0}
+.matrix tbody tr:hover>*{background:rgba(139,92,246,.05)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--violet);box-shadow:0 0 12px rgba(139,92,246,.6)}
+.dot.part{background:transparent;border:2px solid var(--violet);box-shadow:none}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:.85rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+
+/* Panneaux (stages, veille) */
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.panel{border:1px solid var(--line);border-radius:14px;background:var(--bg-2);padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.panel .meta{font-family:var(--f-mono);font-size:.76rem;color:var(--faint)}
+.panel h3{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
+.panel p{color:var(--muted)}
+.panel ul{margin:0;padding-left:18px;display:grid;gap:5px;color:var(--muted)}
+.panel ul li::marker{color:var(--violet)}
+.sources{list-style:none;margin:0;padding:0!important;display:grid;gap:0!important}
+.sources li{display:flex;justify-content:space-between;gap:12px;padding-block:11px;border-bottom:1px solid var(--line)}
+.sources li:last-child{border-bottom:0}
+.sources a{color:var(--fg);text-decoration:none}
+.sources a:hover{color:var(--violet-2)}
+.sources span{font-family:var(--f-mono);font-size:.72rem;color:var(--faint);text-transform:uppercase;letter-spacing:.05em;align-self:center}
+
+/* Contact */
+.contact{position:relative;overflow:hidden;border:1px solid var(--line-2);border-radius:18px;padding:56px 32px;text-align:center;background:var(--bg-2);isolation:isolate}
+.contact::before{content:"";position:absolute;z-index:-1;inset:auto 0 -60% 0;height:120%;background:radial-gradient(closest-side,rgba(139,92,246,.35),transparent);filter:blur(20px)}
+.contact h2{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:700;letter-spacing:-.035em}
+.contact p{color:var(--muted);margin:12px auto 0;max-width:52ch}
+.mail{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.mail code{font-family:var(--f-mono);font-size:.95rem;user-select:all;padding:10px 14px;border-radius:8px;border:1px solid var(--line-2);background:var(--bg);overflow-wrap:anywhere}
+.contact .alt{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:22px;font-size:.9rem}
+.contact .alt a{color:var(--muted);text-decoration:none}
+.contact .alt a:hover{color:var(--fg)}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-block:32px 48px;color:var(--faint);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .feature{grid-template-columns:1fr;padding:24px;gap:28px}
+}
+@media (max-width:640px){
+  .nav .wrap{gap:12px}
+  .brand span{display:none}
+  .hero{padding-block:64px 48px}
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts div:nth-child(3){border-left:0}
+  .facts div:nth-child(n+3){border-top:1px solid var(--line)}
+  section.s{padding-block:64px}
+  .grid,.two{grid-template-columns:1fr}
+  .filters{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px}
+  .filters button{justify-content:center;padding:7px 4px;font-size:.82rem;gap:5px}
+  .contact{padding:40px 20px}
+  .mail code{font-size:.85rem}
+}
+
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>RF</i><span>Riwane Ferroudj</span></a>
+    <ul>
+      <li><a class="l" href="#realisations">Réalisations</a></li>
+      <li><a class="l" href="#synthese">Synthèse E5</a></li>
+      <li><a class="l" href="#stages">Stages</a></li>
+      <li><a class="l" href="#veille">Veille</a></li>
+      <li><a class="l" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <span class="pill"><b>BTS SIO</b> Option SISR · Session <span class="mono">2027</span></span>
+    <h1>Riwane Ferroudj</h1>
+    <p class="lede">Étudiant en BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux. Je mets en ligne des services, je les sécurise et je les maintiens. Ce portfolio présente mes réalisations et les compétences du bloc 1 qu'elles couvrent.</p>
+    <div class="cta">
+      <a class="btn primary" href="#realisations">Voir mes réalisations</a>
+      <a class="btn" href="#synthese">Tableau de synthèse E5</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Formation</dt><dd>BTS SIO SISR</dd></div>
+      <div><dt>Établissement</dt><dd><span class="todo">[à compléter]</span></dd></div>
+      <div><dt>Projets en ligne</dt><dd><span class="mono">5</span> services publiés</dd></div>
+      <div><dt>Recherche</dt><dd>Stage / alternance</dd></div>
+    </dl>
+  </section>
+
+  <section class="s" id="realisations">
+    <div class="s-head">
+      <p class="eyebrow">Réalisations</p>
+      <h2>Des services en ligne, utilisés pour de vrai.</h2>
+      <p>Chaque projet indique son état et les compétences du bloc 1 qu'il mobilise (C1 à C6, détaillées dans le tableau de synthèse).</p>
+    </div>
+
+    <article class="feature" aria-labelledby="rf-title">
+      <div>
+        <span class="status st-live">En ligne</span>
+        <h3 id="rf-title">RF ACADEMIE</h3>
+        <p class="pitch">Site de remise en forme pour débutants : bibliothèque de vidéos, échauffement, exercices, programme personnel et exploration du corps humain en 3D. Publié sur son propre nom de domaine.</p>
+        <ul class="pts">
+          <li><span>Réservation et configuration du nom de domaine <span class="mono">rf-academie.fr</span>, accès en HTTPS.</span></li>
+          <li>Mise en production, suivi et mises à jour du site après publication.</li>
+          <li>Modèle anatomique 3D interactif : muscles, os, tendons, rotation à 360°.</li>
+          <li>Pages pensées pour le téléphone : la majorité des visiteurs arrive depuis un mobile.</li>
+        </ul>
+        <div class="comps" aria-label="Compétences" style="margin-top:18px"><span>C3</span><span>C4</span><span>C5</span><span>C6</span></div>
+        <div class="links">
+          <a class="btn primary" href="https://rf-academie.fr" target="_blank" rel="noopener">Visiter rf-academie.fr ↗</a>
+        </div>
+      </div>
+      <div class="browser" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><span>https://rf-academie.fr</span></div>
+        <div class="site">
+          <nav><b>RF ACADEMIE</b><span>Vidéos · Le corps en 3D · Exercices</span></nav>
+          <p class="big">La remise en forme,<br>en plus simple.</p>
+          <p class="sm">Un espace pour comprendre votre corps et découvrir les mouvements, à votre rythme.</p>
+          <div class="row"><span>Découvrir les vidéos</span><span>Explorer le corps en 3D</span></div>
+          <p class="tick">COMPRENDRE · BOUGER · RECOMMENCER · POUR LES DÉBUTANTS · À VOTRE RYTHME</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="filters" role="group" aria-label="Filtrer les projets par état">
+      <button type="button" data-f="all" aria-pressed="true">Tous <span>9</span></button>
+      <button type="button" data-f="live" aria-pressed="false">En ligne <span>5</span></button>
+      <button type="button" data-f="wip" aria-pressed="false">En cours <span>1</span></button>
+      <button type="button" data-f="soon" aria-pressed="false">Bientôt <span>3</span></button>
+    </div>
+
+    <div class="grid" id="projects">
+      <article class="card" data-status="live">
+        <div class="top"><span class="kind">Site web · Projet vedette</span><span class="status st-live">En ligne</span></div>
+        <h3>RF ACADEMIE</h3>
+        <p>Vidéos, échauffement, exercices et anatomie 3D pour débuter le sport, sur un nom de domaine personnel.</p>
+        <ul class="tags"><li>Nom de domaine</li><li>HTTPS</li><li>3D</li></ul>
+        <div class="comps"><span>C3</span><span>C4</span><span>C5</span><span>C6</span></div>
+        <div class="foot"><a href="https://rf-academie.fr" target="_blank" rel="noopener">Site ↗</a></div>
+      </article>
+
+      <article class="card" data-status="live">
+        <div class="top"><span class="kind">Application web</span><span class="status st-live">En ligne</span></div>
+        <h3>English Leveling</h3>
+        <p>Apprendre l'anglais façon <i>Solo Leveling</i> : 30 donjons de A1 à B2, rangs de E à S, guildes de 7 joueurs avec chat.</p>
+        <ul class="tags"><li>JavaScript</li><li>Supabase</li><li>PostgreSQL</li></ul>
+        <div class="comps"><span>C3</span><span>C4</span><span>C5</span><span>C6</span></div>
+        <div class="foot"><a href="https://github.com/riwanei" target="_blank" rel="noopener">Code sur GitHub ↗</a></div>
+      </article>
+
+      <article class="card" data-status="live">
+        <div class="top"><span class="kind">Application web</span><span class="status st-live">En ligne</span></div>
+        <h3>English Quest</h3>
+        <p>Aventure d'apprentissage de l'anglais : quêtes, pouvoirs, guildes, comptes utilisateurs et sauvegarde sur l'appareil.</p>
+        <ul class="tags"><li>GitHub Pages</li><li>Comptes</li><li>JavaScript</li></ul>
+        <div class="comps"><span>C3</span><span>C5</span><span>C6</span></div>
+        <div class="foot"><a href="https://riwanei.github.io/English-Quest/" target="_blank" rel="noopener">Site ↗</a><a href="https://github.com/riwanei/English-Quest" target="_blank" rel="noopener">Code ↗</a></div>
+      </article>
+
+      <article class="card" data-status="live">
+        <div class="top"><span class="kind">Jeu</span><span class="status st-live">En ligne</span></div>
+        <h3>Mastermind</h3>
+        <p>Le jeu de logique classique dans le navigateur : trouver la combinaison secrète en un minimum d'essais.</p>
+        <ul class="tags"><li>HTML / CSS</li><li>JavaScript</li></ul>
+        <div class="comps"><span>C5</span><span>C6</span></div>
+        <div class="foot"><a href="https://github.com/riwanei" target="_blank" rel="noopener">Code sur GitHub ↗</a></div>
+      </article>
+
+      <article class="card" data-status="live">
+        <div class="top"><span class="kind">Outil réseau</span><span class="status st-live">En ligne</span></div>
+        <h3>Convertisseur Déc · Bin · Hex</h3>
+        <p>Conversion décimal, binaire, hexadécimal avec le calcul détaillé. Utile pour l'adressage IP et les masques de sous-réseau.</p>
+        <ul class="tags"><li>JavaScript</li><li>BigInt</li></ul>
+        <div class="comps"><span>C5</span><span>C6</span></div>
+        <div class="foot"><span class="note">Démonstration à l'oral</span></div>
+      </article>
+
+      <article class="card" data-status="wip">
+        <div class="top"><span class="kind">Infrastructure · Support</span><span class="status st-wip">En cours</span></div>
+        <h3>SIOdesk</h3>
+        <p>Gestion de parc informatique et de tickets d'assistance : inventaire du matériel, affectations, garanties, priorités et historique des interventions.</p>
+        <div class="steps" aria-label="Étape 3 sur 4 : tests"><i class="done"></i><i class="done"></i><i class="done"></i><i></i></div>
+        <div class="steps-l" aria-hidden="true"><span>Analyse</span><span>Dév.</span><span>Tests</span><span>Prod.</span></div>
+        <div class="comps"><span>C1</span><span>C2</span><span>C4</span><span>C5</span></div>
+        <div class="foot"><span class="note">Mise en production prévue avant l'épreuve</span></div>
+      </article>
+
+      <article class="card" data-status="soon">
+        <div class="top"><span class="kind">Service vidéo</span><span class="status st-soon">Bientôt</span></div>
+        <h3>Bibliothèque vidéo RF ACADEMIE</h3>
+        <p>Hébergement et diffusion des vidéos d'exercices, classées par thème et par niveau.</p>
+        <div class="comps"><span>C1</span><span>C5</span></div>
+      </article>
+
+      <article class="card" data-status="soon">
+        <div class="top"><span class="kind">Application mobile</span><span class="status st-soon">Bientôt</span></div>
+        <h3>APP muscu</h3>
+        <p>Suivi des séances de musculation : programmes, séries, charges et progression.</p>
+        <div class="comps"><span>C4</span><span>C5</span></div>
+      </article>
+
+      <article class="card" data-status="soon">
+        <div class="top"><span class="kind">Publication</span><span class="status st-soon">Bientôt</span></div>
+        <h3>Portfolio sur GitHub Pages</h3>
+        <p>Ce portfolio versionné avec Git et publié sur GitHub Pages, pour le jury et les recruteurs.</p>
+        <div class="comps"><span>C3</span><span>C6</span></div>
+      </article>
+      <p class="empty" id="empty" hidden>Aucun projet dans cette catégorie.</p>
+    </div>
+  </section>
+
+  <section class="s" id="synthese">
+    <div class="s-head">
+      <p class="eyebrow">Épreuve E5</p>
+      <h2>Tableau de synthèse</h2>
+      <p>Compétences du bloc 1 « Support et mise à disposition de services informatiques » mobilisées par chaque réalisation.</p>
+    </div>
+    <div class="tbl-wrap">
+      <table class="matrix">
+        <thead><tr>
+          <th scope="col">Réalisation</th>
+          <th scope="col">C1<small>Gérer le patrimoine informatique</small></th>
+          <th scope="col">C2<small>Répondre aux incidents et demandes</small></th>
+          <th scope="col">C3<small>Développer la présence en ligne</small></th>
+          <th scope="col">C4<small>Travailler en mode projet</small></th>
+          <th scope="col">C5<small>Mettre à disposition un service</small></th>
+          <th scope="col">C6<small>Organiser son développement pro.</small></th>
+        </tr></thead>
+        <tbody>
+          <tr><th scope="row">RF ACADEMIE<em>En ligne</em></th><td><span class="dot part" aria-label="en partie"></span></td><td></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td></tr>
+          <tr><th scope="row">English Leveling<em>En ligne</em></th><td></td><td><span class="dot part" aria-label="en partie"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td></tr>
+          <tr><th scope="row">English Quest<em>En ligne</em></th><td></td><td></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot part" aria-label="en partie"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td></tr>
+          <tr><th scope="row">Mastermind<em>En ligne</em></th><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td></tr>
+          <tr><th scope="row">Convertisseur<em>En ligne</em></th><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td></tr>
+          <tr><th scope="row">SIOdesk<em>En cours</em></th><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot" aria-label="mobilisée"></span></td><td><span class="dot part" aria-label="en partie"></span></td></tr>
+          <tr><th scope="row">Stage 1<em>1re année</em></th><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td></tr>
+          <tr><th scope="row">Stage 2<em>2e année</em></th><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td><td><span class="todo">[ ]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i class="dot"></i>Compétence mobilisée</span><span><i class="dot part"></i>Mobilisée en partie</span><span><span class="todo">[ ]</span>À compléter après le stage</span></div>
+  </section>
+
+  <section class="s" id="stages">
+    <div class="s-head">
+      <p class="eyebrow">Milieu professionnel</p>
+      <h2>Stages</h2>
+      <p>Les deux périodes de formation en entreprise du BTS.</p>
+    </div>
+    <div class="two">
+      <article class="panel">
+        <p class="meta">1re année · <span class="todo">[dates]</span></p>
+        <h3><span class="todo">[Entreprise]</span></h3>
+        <p><span class="todo">[Secteur, ville, service d'accueil]</span></p>
+        <ul><li><span class="todo">[Mission : ex. déploiement de postes, Active Directory]</span></li><li><span class="todo">[Outils : ex. GLPI, Windows Server, pfSense]</span></li><li><span class="todo">[Compétences : C1 à C6]</span></li></ul>
+      </article>
+      <article class="panel">
+        <p class="meta">2e année · <span class="todo">[dates]</span></p>
+        <h3><span class="todo">[Entreprise]</span></h3>
+        <p><span class="todo">[Secteur, ville, service d'accueil]</span></p>
+        <ul><li><span class="todo">[Mission principale]</span></li><li><span class="todo">[Outils utilisés]</span></li><li><span class="todo">[Compétences : C1 à C6]</span></li></ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="s" id="veille">
+    <div class="s-head">
+      <p class="eyebrow">Veille technologique</p>
+      <h2>Rançongiciels et sauvegardes</h2>
+      <p>Sujet suivi pendant la formation : comment les rançongiciels attaquent les infrastructures des organisations, et comment une politique de sauvegarde permet de redémarrer.</p>
+    </div>
+    <div class="two">
+      <article class="panel">
+        <h3>Ce que je suis</h3>
+        <ul>
+          <li>Les modes d'entrée : hameçonnage, accès à distance mal protégés, failles non corrigées.</li>
+          <li>La règle 3-2-1 : trois copies, deux supports, une copie hors site.</li>
+          <li>Les sauvegardes immuables et hors ligne, que l'attaquant ne peut pas chiffrer.</li>
+          <li>La segmentation du réseau pour limiter la propagation.</li>
+          <li>Les plans de reprise d'activité et les tests de restauration.</li>
+        </ul>
+        <p>Mise en pratique : sauvegarde et restauration testées sur les services que je publie.</p>
+      </article>
+      <article class="panel">
+        <h3>Sources suivies</h3>
+        <ul class="sources">
+          <li><a href="https://www.cert.ssi.gouv.fr/" target="_blank" rel="noopener">CERT-FR</a><span>Alertes</span></li>
+          <li><a href="https://cyber.gouv.fr/" target="_blank" rel="noopener">ANSSI</a><span>Guides</span></li>
+          <li><a href="https://www.cybermalveillance.gouv.fr/" target="_blank" rel="noopener">Cybermalveillance.gouv.fr</a><span>Actualité</span></li>
+          <li><a href="https://www.lemagit.fr/" target="_blank" rel="noopener">LeMagIT</a><span>Presse IT</span></li>
+          <li><a href="https://www.cnil.fr/" target="_blank" rel="noopener">CNIL</a><span>RGPD</span></li>
+        </ul>
+        <p class="meta">Méthode : flux RSS dans un agrégateur, une fiche de synthèse par mois.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="s" id="contact">
+    <div class="contact">
+      <p class="eyebrow">Contact</p>
+      <h2 style="margin-top:10px">Parlons de votre infrastructure.</h2>
+      <p>Pour un stage, une alternance ou une question sur un projet, écrivez-moi.</p>
+      <div class="mail">
+        <code id="mail">riwaneferroudj@gmail.com</code>
+        <button class="btn primary" type="button" id="copy">Copier l'adresse</button>
+      </div>
+      <div class="alt">
+        <a href="https://github.com/riwanei" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://rf-academie.fr" target="_blank" rel="noopener">rf-academie.fr ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Riwane Ferroudj · BTS SIO option SISR</span>
+    <span class="mono">Session 2027</span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll(".filters button"),cards=document.querySelectorAll("#projects .card"),empty=document.getElementById("empty");
+  function apply(f){
+    var n=0;
+    btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.f===f))});
+    cards.forEach(function(c){var show=f==="all"||c.dataset.status===f;c.hidden=!show;if(show)n++});
+    empty.hidden=n>0;
+    try{localStorage.setItem("pf-filter",f)}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener("click",function(){apply(b.dataset.f)})});
+  var saved;try{saved=localStorage.getItem("pf-filter")}catch(e){}
+  if(saved&&document.querySelector('.filters [data-f="'+saved+'"]'))apply(saved);
+
+  var copy=document.getElementById("copy"),mail=document.getElementById("mail");
+  copy.addEventListener("click",function(){
+    function done(){copy.textContent="Adresse copiée";setTimeout(function(){copy.textContent="Copier l'adresse"},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);copy.textContent="Sélectionnée : Ctrl+C"}
+    try{navigator.clipboard.writeText(mail.textContent).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+
+</body>
+</html>
